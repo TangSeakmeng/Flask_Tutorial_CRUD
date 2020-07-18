@@ -14,7 +14,7 @@ class clsUser:
     def login_post():
         username = request.form["txtUsername"]
         password = request.form["txtPassword"]
-        if username == "admin" and password == "Sea03107778":
+        if username == "admin" and password == "admin":
             session['username'] = username
             return render_template("./admin_panel/index.html", title='Dashboard', username=session.get("username"))
         else:
