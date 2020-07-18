@@ -1,0 +1,66 @@
+{% extends "admin_panel/layout.html" %}
+
+{% block content %}
+    <h2>Product Management</h2>
+    <div class="box box-primary" style="margin-top: 20px">
+        <div>
+            <div class="box-header with-border">
+                  <h3 class="box-title">Product Registration</h3>
+            </div>
+            <form method="post" action="/admin/update-product" enctype="multipart/form-data">
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label for="txtProductId">ID</label>
+                  <input type="number" class="form-control" id="txtProductId" name="txtProductId" placeholder="ID" readonly="" value="{{ product[0] }}">
+                </div>
+
+                <div class="form-group">
+                  <label for="txtName">Name</label>
+                  <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Enter Name" value="{{ product[1] }}">
+                </div>
+
+                <div class="form-group">
+                  <label for="txtDescription">Description</label>
+                  <input type="text" class="form-control" id="txtDescription" name="txtDescription" placeholder="Enter Description" value="{{ product[2] }}">
+                </div>
+
+                <div class="form-group">
+                  <label for="selectCategory">Category</label>
+                      <select class="form-control" id="selectCategory" name="selectCategory" placeholder="Enter Quantity">
+                        {% for item in category_list %}
+                            {% if item.0 == product[3] %}
+                                <option selected>{{ item.0 }}</option>
+                            {% else %}
+                                <option>{{ item.0 }}</option>
+                            {% endif %}
+                        {% endfor %}
+                      </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="txtQuantity">Quantity</label>
+                  <input type="number" class="form-control" id="txtQuantity" name="txtQuantity" placeholder="Enter Quantity" value="{{ product[4] }}">
+                </div>
+
+                <div class="form-group">
+                  <label for="txtPrice">Price</label>
+                  <input type="number" class="form-control" id="txtPrice" name="txtPrice" placeholder="Enter Price" value="{{ product[5] }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="fileImage">Image</label>
+                    <input type="file" id="fileImage" name="fileImage">
+                </div>
+
+              </div>
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+        </div>
+
+    </div><!-- /.box -->
+{% endblock %}
